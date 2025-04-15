@@ -1,14 +1,14 @@
 package examples.demo.model;
 
 
+import jakarta.persistence.Entity;
 import lombok.*;
 
+@Entity
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @ToString
 public class Item {
 
@@ -16,9 +16,6 @@ public class Item {
     private String price;
 
 }
-
-
-
 
 //{
 //        "retailer": "Walgreens",

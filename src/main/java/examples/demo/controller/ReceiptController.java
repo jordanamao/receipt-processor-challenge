@@ -3,6 +3,7 @@ package examples.demo.controller;
 
 import examples.demo.model.Receipt;
 import examples.demo.service.ReceiptService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class ReceiptController {
 
 
+    @Autowired
     private ReceiptService receiptService;
 
     private String id;
@@ -25,6 +27,8 @@ public class ReceiptController {
     @PostMapping("receipts/process")
     public ResponseEntity<String> processReceipt(@RequestBody Receipt receipt) {
 
+        receiptService.processReceipt(receipt);
+
         return ResponseEntity.ok(id);
 
     }
@@ -32,6 +36,8 @@ public class ReceiptController {
 
     @GetMapping("/receipts/{id}/points")
     public ResponseEntity<String> getPoints(@PathVariable String id) {
+
+        receiptService.getReceiptById(id);
 
         return ResponseEntity.ok(points);
 

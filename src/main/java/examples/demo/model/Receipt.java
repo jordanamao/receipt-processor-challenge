@@ -1,17 +1,17 @@
 package examples.demo.model;
 
 
+import jakarta.persistence.Entity;
 import lombok.*;
 
 import java.util.List;
 
 
+@Entity
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
 @ToString
 public class Receipt {
 
