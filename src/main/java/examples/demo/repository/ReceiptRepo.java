@@ -5,6 +5,9 @@ import examples.demo.model.Item;
 import examples.demo.model.Receipt;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -80,6 +83,7 @@ public class ReceiptRepo {
             return value % 1 == 0;
 
         } catch (NumberFormatException e) {
+
             return false; // Not a valid number
         }
     }
@@ -97,6 +101,46 @@ public class ReceiptRepo {
     }
 
 
+    public int calculateItemDescriptionTrimLength(List<Item> items){
+
+        int totalPoints = 0;
+
+        for (Item item : items) {
+
+            if(item.getShortDescription().trim().length() % 3 == 0) {
+               int points = (int)(Math.ceil(Double.parseDouble(item.getPrice())) * 0.2);
+               totalPoints += points;
+            }
+        }
+
+        return totalPoints;
+
+    }
+
+
+
+    public boolean isPurchaseDayOdd(String str){
+
+        String dateFormat = "yyyy-MM-dd";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern(dateFormat);
+        LocalDate localDate = LocalDate.parse(str, formatter);
+        int day = localDate.getDayOfMonth();
+        return day % 2 != 0;
+
+    }
+
+
+    public boolean  isBetweenPurchaseTime(String purchaseTime){
+
+        LocalTime start = LocalTime.parse( "14:00");
+        LocalTime stop = LocalTime.parse( "16:00");
+        LocalTime target = LocalTime.parse(purchaseTime);
+        return target.isAfter(start) && target.isBefore(stop);
+
+    }
+
+
+
 
     public String calculatePoints(Receipt receipt){
 
@@ -104,8 +148,14 @@ public class ReceiptRepo {
         int fiftyPoints =  isRoundDollarAmount(receipt.getTotal()) ? 50 : 0;
         int totalMultipleOfQuater = isTotalMultipleOfQuater(receipt.getTotal()) ? 25 : 0;
         int fivePointsForTwoPairs = (int)(Math.floor(receipt.getItems().size()/2));
+        int trimLengthMultipleThreePoints = calculateItemDescriptionTrimLength(receipt.getItems());
+        int sixPointsForOddPurchaseDays = isPurchaseDayOdd(receipt.getPurchaseDate()) ? 6 : 0;
+        int tenPointsForInBetweenPurchaseTime = isBetweenPurchaseTime(receipt.getPurchaseTime()) ? 10 : 0;
 
-        int totalPoints = alphaNumericCount + fiftyPoints +totalMultipleOfQuater +fivePointsForTwoPairs;
+
+
+        int totalPoints = alphaNumericCount + fiftyPoints +totalMultipleOfQuater + fivePointsForTwoPairs
+                + trimLengthMultipleThreePoints + sixPointsForOddPurchaseDays + tenPointsForInBetweenPurchaseTime;
 
         return String.valueOf(totalPoints);
 
