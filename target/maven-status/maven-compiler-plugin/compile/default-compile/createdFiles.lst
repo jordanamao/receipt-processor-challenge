@@ -1,9 +1,0 @@
-examples/demo/model/Item$ItemBuilder.class
-com/example/demo/DemoApplication.class
-examples/demo/repository/ReceiptRepo.class
-examples/demo/model/Item.class
-examples/demo/service/ReceiptServiceImpl.class
-examples/demo/model/Receipt$ReceiptBuilder.class
-examples/demo/controller/ReceiptController.class
-examples/demo/model/Receipt.class
-examples/demo/service/ReceiptService.class

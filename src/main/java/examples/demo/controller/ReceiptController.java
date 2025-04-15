@@ -24,7 +24,7 @@ public class ReceiptController {
     @PostMapping("/process")
     public ResponseEntity<String> processReceipt(@RequestBody Receipt receipt) {
 
-        return ResponseEntity.ok().body( receiptService.processReceipt(receipt));
+        return ResponseEntity.ok().body(receiptService.processReceipt(receipt));
 
     }
 
