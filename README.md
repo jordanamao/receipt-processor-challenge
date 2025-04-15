@@ -11,6 +11,10 @@ Data does not need to persist when your application stops. It is sufficient to s
 
 You can assume our engineers have Go and Docker installed to run your application. Go is our preferred language, but choosing it will not give you an advantage in the evaluation. If you are not using Go, include a Dockerized setup to run the code. You should also provide detailed instructions if your Docker file requires any additional configuration to run the application.
 
+
+## how to run
+invoke the h2 db by entering this url in the web browser: http://localhost:8080/h2-console
+
 ## Submitting Your Solution
 
 Provide a link to a public repository, such as GitHub or BitBucket, that contains your code to the provided link through Greenhouse.
