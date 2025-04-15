@@ -17,7 +17,6 @@ public class ReceiptController {
     private ReceiptService receiptService;
 
     private String id;
-    private String points;
 
 
     public ReceiptController(ReceiptService receiptService) {
@@ -28,9 +27,7 @@ public class ReceiptController {
     @PostMapping("/process")
     public ResponseEntity<String> processReceipt(@RequestBody Receipt receipt) {
 
-        receiptService.processReceipt(receipt);
-
-        return ResponseEntity.ok(id);
+        return ResponseEntity.ok().body( receiptService.processReceipt(receipt));
 
     }
 
@@ -38,9 +35,7 @@ public class ReceiptController {
     @GetMapping("/{id}/points")
     public ResponseEntity<String> getPoints(@PathVariable String id) {
 
-        receiptService.getReceiptById(id);
-
-        return ResponseEntity.ok(points);
+       return ResponseEntity.ok().body(receiptService.getReceiptById(id));
 
     }
 
