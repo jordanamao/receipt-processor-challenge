@@ -1,17 +1,18 @@
 package examples.demo.controller;
 
 
-import examples.demo.model.Receipt;
-import examples.demo.model.ReceiptRequest;
+
+import examples.demo.domain.ProcessReceiptResponse;
+import examples.demo.domain.ReceiptPointResponse;
+import examples.demo.domain.ReceiptRequest;
 import examples.demo.service.ReceiptService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/receipts")
 public class ReceiptController {
 
@@ -21,17 +22,20 @@ public class ReceiptController {
 
 
     @PostMapping("/process")
-    public ResponseEntity<String> processReceipt(@RequestBody ReceiptRequest receipt) {
+    public ResponseEntity<ProcessReceiptResponse> processReceipt(@RequestBody ReceiptRequest receipt) {
 
-        return ResponseEntity.accepted().body(receiptService.processReceipt(receipt));
+        String id = receiptService.processReceipt(receipt);
+        return new ResponseEntity<>(new ProcessReceiptResponse(id), HttpStatus.CREATED);
 
     }
 
 
     @GetMapping("/{id}/points")
-    public ResponseEntity<String> getPoints(@PathVariable String id) {
+    public ResponseEntity<ReceiptPointResponse> getPoints(@PathVariable String id) {
 
-       return ResponseEntity.ok().body(receiptService.getReceiptById(id));
+        String points = receiptService.getReceiptById(id);
+
+        return new ResponseEntity<>(new ReceiptPointResponse(points), HttpStatus.OK);
 
     }
 

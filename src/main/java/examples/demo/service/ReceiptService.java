@@ -1,8 +1,7 @@
 package examples.demo.service;
 
 
-import examples.demo.model.Receipt;
-import examples.demo.model.ReceiptRequest;
+import examples.demo.domain.ReceiptRequest;
 
 
 public interface ReceiptService {

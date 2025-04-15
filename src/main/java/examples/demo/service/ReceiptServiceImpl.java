@@ -3,7 +3,7 @@ package examples.demo.service;
 
 import examples.demo.model.Item;
 import examples.demo.model.Receipt;
-import examples.demo.model.ReceiptRequest;
+import examples.demo.domain.ReceiptRequest;
 import examples.demo.repository.ReceiptRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
