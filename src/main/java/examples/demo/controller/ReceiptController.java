@@ -16,9 +16,6 @@ public class ReceiptController {
     @Autowired
     private ReceiptService receiptService;
 
-    private String id;
-
-
     public ReceiptController(ReceiptService receiptService) {
         this.receiptService = receiptService;
     }
