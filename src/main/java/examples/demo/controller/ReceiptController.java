@@ -1,7 +1,7 @@
 package examples.demo.controller;
 
 
-import examples.demo.model.Receipt;
+import examples.demo.model.ReceiptRequest;
 import examples.demo.service.ReceiptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class ReceiptController {
 
 
     @PostMapping("/process")
-    public ResponseEntity<String> processReceipt(@RequestBody Receipt receipt) {
+    public ResponseEntity<String> processReceipt(@RequestBody ReceiptRequest receipt) {
 
         return ResponseEntity.ok().body(receiptService.processReceipt(receipt));
 

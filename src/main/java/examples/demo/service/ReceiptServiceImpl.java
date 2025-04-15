@@ -3,6 +3,7 @@ package examples.demo.service;
 
 import examples.demo.model.Item;
 import examples.demo.model.Receipt;
+import examples.demo.model.ReceiptRequest;
 import examples.demo.repository.ReceiptRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 @Service
@@ -27,11 +27,8 @@ public class ReceiptServiceImpl implements ReceiptService{
 
 
 
-    String points;
-
-
     @Override
-    public String processReceipt(Receipt receipt) {
+    public String processReceipt(ReceiptRequest receipt) {
 
         String id =  UUID.randomUUID().toString();
         receipt.setId(id);
@@ -147,7 +144,7 @@ public class ReceiptServiceImpl implements ReceiptService{
         int alphaNumericCount = alphNumericCount(receipt.getRetailer());
         int fiftyPoints =  isRoundDollarAmount(receipt.getTotal()) ? 50 : 0;
         int totalMultipleOfQuater = isTotalMultipleOfQuater(receipt.getTotal()) ? 25 : 0;
-        int fivePointsForTwoPairs = (int)(Math.floor(receipt.getItems().size()/2));
+        int fivePointsForTwoPairs = (int)(Math.floor(receipt.getItems().size()/2)) * 5;
         int trimLengthMultipleThreePoints = calculateItemDescriptionTrimLength(receipt.getItems());
         int sixPointsForOddPurchaseDays = isPurchaseDayOdd(receipt.getPurchaseDate()) ? 6 : 0;
         int tenPointsForInBetweenPurchaseTime = isBetweenPurchaseTime(receipt.getPurchaseTime()) ? 10 : 0;
@@ -165,8 +162,7 @@ public class ReceiptServiceImpl implements ReceiptService{
     public String getReceiptById(String id) {
 
         Receipt receipt = receiptRepo.findById(Integer.parseInt(id)).orElseThrow(() -> new IllegalStateException("Receipt with ID " + id + " does not exist"));
-
-        return points = calculatePoints(receipt);
+        return  calculatePoints(receipt);
 
 //        for(Receipt receipt : receiptList){
 //            if(receipt.getId().equals(id)){
