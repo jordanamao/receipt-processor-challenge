@@ -9,7 +9,6 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
 public class Item {
 
     private String shortDescription;
