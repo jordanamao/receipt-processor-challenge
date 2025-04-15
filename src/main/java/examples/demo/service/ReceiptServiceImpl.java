@@ -13,6 +13,7 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Random;
+import java.util.UUID;
 
 @Service
 @AllArgsConstructor
@@ -25,27 +26,14 @@ public class ReceiptServiceImpl implements ReceiptService{
     //private List<Receipt> receiptList = new ArrayList<>();  //store in arrayList
 
 
-    String id;
+
     String points;
-
-
-
-    public static String generateRandomCode() {
-        Random random = new Random();
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < 18; i++) {
-            sb.append(random.nextInt(10));
-        }
-        return sb.toString();
-    }
-
 
 
     @Override
     public String processReceipt(Receipt receipt) {
 
-        id = generateRandomCode();
+        String id =  UUID.randomUUID().toString();
         receipt.setId(id);
 
         Receipt newReceipt = Receipt.builder()

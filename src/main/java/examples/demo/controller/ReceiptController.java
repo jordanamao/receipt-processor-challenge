@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
+@RequestMapping("/receipts")
 public class ReceiptController {
 
 
@@ -24,7 +25,7 @@ public class ReceiptController {
     }
 
 
-    @PostMapping("receipts/process")
+    @PostMapping("/process")
     public ResponseEntity<String> processReceipt(@RequestBody Receipt receipt) {
 
         receiptService.processReceipt(receipt);
@@ -34,7 +35,7 @@ public class ReceiptController {
     }
 
 
-    @GetMapping("/receipts/{id}/points")
+    @GetMapping("/{id}/points")
     public ResponseEntity<String> getPoints(@PathVariable String id) {
 
         receiptService.getReceiptById(id);
