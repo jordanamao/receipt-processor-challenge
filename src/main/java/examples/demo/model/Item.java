@@ -4,7 +4,7 @@ package examples.demo.model;
 import jakarta.persistence.Entity;
 import lombok.*;
 
-@Entity
+
 @Builder
 @Data
 @AllArgsConstructor
