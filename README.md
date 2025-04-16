@@ -13,6 +13,7 @@ You can assume our engineers have Go and Docker installed to run your applicatio
 
 
 ## how to run
+check out feature branch receipt-processor-challenge
 Open the project in intellij, maven clean and install. Then run the applicaion.
 
 
