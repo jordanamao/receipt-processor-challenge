@@ -13,14 +13,10 @@ You can assume our engineers have Go and Docker installed to run your applicatio
 
 
 ## how to run
-git clone the repository from the feature branch.
-check out feature branch receipt-processor-challenge.
-Open the project in intellij, maven clean and install. Then run the applicaion.
-
-
-
-
-
+Open the project in intellij, git clone the repository.
+check out feature branch feature/receipt-processor-challenge.
+Once opened up intellij, and on the correct branch. maven clean and install in terminal. 
+Then run the applicaion.
 
 
 Access the H2 console at http://localhost:8080/h2-console (JDBC URL: jdbc:h2:mem:defaultdb, username: sa, password: "").
