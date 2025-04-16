@@ -1,15 +1,15 @@
 package examples.demo.service;
 
 
-import examples.demo.domain.ReceiptRequest;
-import examples.demo.model.Receipt;
+import examples.demo.databaseModel.ReceiptDatabaseModel;
+
 
 
 public interface ReceiptService {
 
-    String processReceipt(Receipt receipt);
+    String processReceipt(ReceiptDatabaseModel receipt);
 
-    String getReceiptById(String id);
+    String getReceiptById(Long id);
 
 
 }

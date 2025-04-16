@@ -1,11 +1,9 @@
 package examples.demo.service;
 
 
-import examples.demo.DatabaseModel.ReceiptDatabaseModel;
-import examples.demo.model.Item;
-import examples.demo.model.Receipt;
+import examples.demo.databaseModel.ItemDatabaseModel;
+import examples.demo.databaseModel.ReceiptDatabaseModel;
 import examples.demo.repository.ReceiptRepo;
-import examples.demo.service.ObjectToDataObjectMapper.MapReceiptDTOReceiptDatabaseModelMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,8 +22,8 @@ public class ReceiptServiceImpl implements ReceiptService{
     private ReceiptRepo receiptRepo;
 
 
-    @Autowired
-    private MapReceiptDTOReceiptDatabaseModelMapper mapReceiptToReceiptDatabaseModelMapper;
+//    @Autowired
+//    private MapReceiptDTOReceiptDatabaseModelMapper mapReceiptToReceiptDatabaseModelMapper;
 
 
     //private List<Receipt> receiptList = new ArrayList<>();  //store in arrayList
@@ -33,12 +31,12 @@ public class ReceiptServiceImpl implements ReceiptService{
 
 
     @Override
-    public String processReceipt(Receipt receipt) {
+    public String processReceipt(ReceiptDatabaseModel receipt) {
 
         String id = UUID.randomUUID().toString();
-        receipt.setId(id);
+        receipt.setId(Long.parseLong(id));
 
-        Receipt newReceipt = new Receipt();
+        ReceiptDatabaseModel newReceipt = new ReceiptDatabaseModel();
         newReceipt.setId(receipt.getId());
         newReceipt.setRetailer(receipt.getRetailer());
         newReceipt.setPurchaseTime(receipt.getPurchaseTime());
@@ -57,7 +55,8 @@ public class ReceiptServiceImpl implements ReceiptService{
 
         //receiptList.add(newReceipt);
 
-        receiptRepo.save(mapReceiptToReceiptDatabaseModelMapper.toReceiptDatabaseModel(newReceipt));
+        //receiptRepo.save(mapReceiptToReceiptDatabaseModelMapper.toReceiptDatabaseModel(newReceipt));
+        receiptRepo.save(newReceipt);
         return id;
 
     }
@@ -112,11 +111,11 @@ public class ReceiptServiceImpl implements ReceiptService{
     }
 
 
-    public int calculateItemDescriptionTrimLength(List<Item> items){
+    public int calculateItemDescriptionTrimLength(List<ItemDatabaseModel> items){
 
         int totalPoints = 0;
 
-        for (Item item : items) {
+        for (ItemDatabaseModel item : items) {
 
             if(item.getShortDescription().trim().length() % 3 == 0) {
                 int points = (int)(Math.ceil(Double.parseDouble(item.getPrice())) * 0.2);
@@ -153,7 +152,7 @@ public class ReceiptServiceImpl implements ReceiptService{
 
 
 
-    public String calculatePoints(Receipt receipt){
+    public String calculatePoints(ReceiptDatabaseModel receipt){
 
         int alphaNumericCount = alphNumericCount(receipt.getRetailer());
         int fiftyPoints =  isRoundDollarAmount(receipt.getTotal()) ? 50 : 0;
@@ -173,12 +172,14 @@ public class ReceiptServiceImpl implements ReceiptService{
 
 
     @Override
-    public String getReceiptById(String id) {
+    public String getReceiptById(Long id) {
 
 
-        ReceiptDatabaseModel receiptDatabaseModel = receiptRepo.findById(Integer.parseInt(id)).orElseThrow(() -> new IllegalStateException("Receipt with ID " + id + " does not exist"));
-        Receipt receipt = mapReceiptToReceiptDatabaseModelMapper.toReceiptDTO(receiptDatabaseModel);
-        return  calculatePoints(receipt);
+        ReceiptDatabaseModel receiptDatabaseModel = receiptRepo.findById(id).orElseThrow(() -> new IllegalStateException("Receipt with ID " + id + " does not exist"));
+        //Receipt receipt = mapReceiptToReceiptDatabaseModelMapper.toReceiptDTO(receiptDatabaseModel);
+        //return  calculatePoints(receipt);
+
+        return calculatePoints(receiptDatabaseModel);
 
 //        for(Receipt receipt : receiptList){
 //            if(receipt.getId().equals(id)){

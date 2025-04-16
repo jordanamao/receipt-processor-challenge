@@ -13,7 +13,12 @@ You can assume our engineers have Go and Docker installed to run your applicatio
 
 
 ## how to run
-invoke the h2 db by entering this url in the web browser: http://localhost:8080/h2-console
+Open the project in intellij, maven clean and install. Then run the applicaion.
+![Screenshot 2025-04-16 at 12.11.09 PM.png](../../Desktop/Screenshot%202025-04-16%20at%2012.11.09%E2%80%AFPM.png)
+
+
+
+Access the H2 console at http://localhost:8080/h2-console (JDBC URL: jdbc:h2:mem:defaultdb, username: sa, password: "").
 
 ## Submitting Your Solution
 
