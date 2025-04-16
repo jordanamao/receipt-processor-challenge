@@ -14,7 +14,10 @@ You can assume our engineers have Go and Docker installed to run your applicatio
 
 ## how to run
 Open the project in intellij, maven clean and install. Then run the applicaion.
-![Screenshot 2025-04-16 at 12.11.09 PM.png](../../Desktop/Screenshot%202025-04-16%20at%2012.11.09%E2%80%AFPM.png)
+
+
+
+
 
 
 
