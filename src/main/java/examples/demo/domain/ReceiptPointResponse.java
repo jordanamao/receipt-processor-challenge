@@ -9,7 +9,11 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 public class ReceiptPointResponse {
         String points;
+
+        public ReceiptPointResponse(String points) {
+            this.points = points;
+        }
     }

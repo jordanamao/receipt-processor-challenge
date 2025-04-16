@@ -1,5 +1,6 @@
 package examples.demo.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,9 +17,11 @@ import java.math.BigDecimal;
 public class ReceiptRequestItem {
 
     @NotNull
+    @JsonProperty("shortDescription")
     String shortDescription;
 
     @NotNull
+    @JsonProperty("price")
     BigDecimal price;
 
 }

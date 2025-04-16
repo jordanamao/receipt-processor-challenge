@@ -2,22 +2,19 @@ package examples.demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import examples.demo.model.Item;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.List;
 
 
-@Getter
-@Setter
-@Builder
+@Data
 @AllArgsConstructor
 public class ReceiptRequest {
 
+
+    @JsonProperty("id")
     private String id;
 
     @NotNull
@@ -39,7 +36,7 @@ public class ReceiptRequest {
     @JsonProperty("total")
     private String total;
 
-
+    @JsonProperty("items")
     private List<Item> items;
 
 }
