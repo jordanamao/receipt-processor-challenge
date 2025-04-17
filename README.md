@@ -28,6 +28,24 @@ Access the H2 console at http://localhost:8080/h2-console (JDBC URL: jdbc:h2:mem
 <img width="454" alt="Screenshot 2025-04-16 at 8 52 21 PM" src="https://github.com/user-attachments/assets/131c94dd-8f9a-4741-a1f0-340402ab4a38" />
 
 
+## Sample Response
+Sample post
+<img width="993" alt="Screenshot 2025-04-16 at 11 35 18 PM" src="https://github.com/user-attachments/assets/b2adca44-a826-4735-9733-bda97573974d" />
+
+Sample get
+<img width="953" alt="Screenshot 2025-04-16 at 11 35 58 PM" src="https://github.com/user-attachments/assets/35073a4b-da72-40a0-93d7-392ad7095855" />
+
+Sample h2 db
+<img width="1188" alt="Screenshot 2025-04-16 at 11 44 42 PM" src="https://github.com/user-attachments/assets/7be44192-5c66-4253-8d8e-4392799965fc" />
+
+<img width="1185" alt="Screenshot 2025-04-16 at 11 45 25 PM" src="https://github.com/user-attachments/assets/bc43db4f-1355-4682-8250-aa9f1db0cd5e" />
+
+
+
+
+
+
+
 
 
 
