@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Slf4j
 @RestController
+@RequestMapping("/receipts")
 public class ReceiptController {
 
 
@@ -36,9 +37,9 @@ public class ReceiptController {
     }
 
 
-    @RequestMapping(value ="/points", method = RequestMethod.GET)
+    @GetMapping("{id}/points")
     public ResponseEntity<ReceiptPointResponse> getPoints(@PathVariable String id) {
-        //log.info("inside points");
+        System.out.println("inside points");
 
         String points = receiptService.getReceiptById(Long.parseLong(id));
 
