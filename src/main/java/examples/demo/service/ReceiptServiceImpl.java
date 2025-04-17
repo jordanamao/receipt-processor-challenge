@@ -26,10 +26,6 @@ public class ReceiptServiceImpl implements ReceiptService{
 //    private MapReceiptDTOReceiptDatabaseModelMapper mapReceiptToReceiptDatabaseModelMapper;
 
 
-    //private List<Receipt> receiptList = new ArrayList<>();  //store in arrayList
-
-
-
     @Override
     public String processReceipt(ReceiptDatabaseModel receipt) {
 
@@ -43,17 +39,6 @@ public class ReceiptServiceImpl implements ReceiptService{
         newReceipt.setPurchaseDate(receipt.getPurchaseDate());
         newReceipt.setItems(receipt.getItems());
         newReceipt.setTotal(receipt.getTotal());
-
-
-//                .id(receipt.getId())
-//                .retailer((receipt.getRetailer()))
-//                .purchaseTime(receipt.getPurchaseTime())
-//                .purchaseDate(receipt.getPurchaseDate())
-//                .total(receipt.getTotal())
-//                .items(receipt.getItems())
-//                .build();
-
-        //receiptList.add(newReceipt);
 
         //receiptRepo.save(mapReceiptToReceiptDatabaseModelMapper.toReceiptDatabaseModel(newReceipt));
         receiptRepo.save(newReceipt);
@@ -128,7 +113,6 @@ public class ReceiptServiceImpl implements ReceiptService{
     }
 
 
-
     public boolean isPurchaseDayOdd(String str){
 
         String dateFormat = "yyyy-MM-dd";
@@ -174,18 +158,10 @@ public class ReceiptServiceImpl implements ReceiptService{
     @Override
     public String getReceiptById(String id) {
 
-
         ReceiptDatabaseModel receiptDatabaseModel = receiptRepo.findById(id).orElseThrow(() -> new IllegalStateException("Receipt with ID " + id + " does not exist"));
         //Receipt receipt = mapReceiptToReceiptDatabaseModelMapper.toReceiptDTO(receiptDatabaseModel);
-        //return  calculatePoints(receipt);
 
         return calculatePoints(receiptDatabaseModel);
-
-//        for(Receipt receipt : receiptList){
-//            if(receipt.getId().equals(id)){
-//                return points = calculatePoints(receipt);
-//            }
-//        }
 
     }
 }

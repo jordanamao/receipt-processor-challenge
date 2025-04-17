@@ -27,24 +27,22 @@ public class ReceiptController {
 
 
     @PostMapping("/process")
-    public ResponseEntity<String> processReceipt(@RequestBody ReceiptDatabaseModel receiptDatabaseModel) {
+    public ResponseEntity<ProcessReceiptResponse> processReceipt(@RequestBody ReceiptDatabaseModel receiptDatabaseModel) {
 
- //       Receipt receipt = mapRequestToBusinessModelMapper.toReceiptDTO(receiptRequest);
+ //     Receipt receipt = mapRequestToBusinessModelMapper.toReceiptDTO(receiptRequest);
         String id = receiptService.processReceipt(receiptDatabaseModel);
 
-       //return new ResponseEntity<>(new ProcessReceiptResponse(id),HttpStatus.CREATED);
-        return ResponseEntity.status(HttpStatus.CREATED).body(id);
+        return new ResponseEntity<>(new ProcessReceiptResponse(id), HttpStatus.CREATED);
+        //return ResponseEntity.status(HttpStatus.CREATED).body(id);
     }
 
 
     @GetMapping("/{id}/points")
-    public ResponseEntity<String> getPoints(@PathVariable String id) {
-        System.out.println("inside points");
-
+    public ResponseEntity<ReceiptPointResponse> getPoints(@PathVariable String id) {
         String points = receiptService.getReceiptById(id);
 
-    //    return new ResponseEntity<>(new ReceiptPointResponse(points), HttpStatus.OK);
-        return ResponseEntity.status(HttpStatus.OK).body(points);
+        return new ResponseEntity<>(new ReceiptPointResponse(points), HttpStatus.OK);
+        //return ResponseEntity.status(HttpStatus.OK).body(points);
 
     }
 
