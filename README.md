@@ -23,6 +23,10 @@ Then run the applicaion.
 
 
 Access the H2 console at http://localhost:8080/h2-console (JDBC URL: jdbc:h2:mem:defaultdb, username: sa, password: "").
+<img width="301" alt="Screenshot 2025-04-16 at 8 52 38 PM" src="https://github.com/user-attachments/assets/001b1045-265b-4780-b84e-75cc615c1e8d" />
+
+
+
 
 ## Submitting Your Solution
 
