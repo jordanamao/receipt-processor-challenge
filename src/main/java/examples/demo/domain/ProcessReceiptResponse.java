@@ -1,7 +1,5 @@
 package examples.demo.domain;
 
-import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

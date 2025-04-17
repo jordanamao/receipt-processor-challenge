@@ -22,10 +22,6 @@ public class ReceiptServiceImpl implements ReceiptService{
     private ReceiptRepo receiptRepo;
 
 
-//    @Autowired
-//    private MapReceiptDTOReceiptDatabaseModelMapper mapReceiptToReceiptDatabaseModelMapper;
-
-
     @Override
     public String processReceipt(ReceiptDatabaseModel receipt) {
 
