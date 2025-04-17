@@ -2,7 +2,7 @@ package examples.demo.requestToObjectMapper;
 
 
 import examples.demo.databaseModel.ReceiptDatabaseModel;
-import examples.demo.model.Receipt;
+import examples.demo.businessModel.Receipt;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Named;

@@ -1,7 +1,7 @@
 package examples.demo.requestToObjectMapper;
 
 import examples.demo.domain.ReceiptRequest;
-import examples.demo.model.Receipt;
+import examples.demo.businessModel.Receipt;
 import org.mapstruct.Mapper;
 
 @Mapper(uses = MapItemDTORequestItemMapper.class)

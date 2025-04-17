@@ -2,15 +2,15 @@ package examples.demo.requestToObjectMapper;
 
 import examples.demo.databaseModel.ItemDatabaseModel;
 import examples.demo.databaseModel.ReceiptDatabaseModel;
-import examples.demo.model.Item;
-import examples.demo.model.Receipt;
+import examples.demo.businessModel.Item;
+import examples.demo.businessModel.Receipt;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-04-16T12:07:15-0500",
+    date = "2025-04-16T13:19:51-0500",
     comments = "version: 1.6.0.Beta1, compiler: javac, environment: Java 17.0.14 (Microsoft)"
 )
 public class MapReceiptDTOReceiptDatabaseModelMapperImpl implements MapReceiptDTOReceiptDatabaseModelMapper {

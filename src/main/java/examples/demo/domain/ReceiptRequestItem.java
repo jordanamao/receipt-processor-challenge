@@ -3,7 +3,7 @@ package examples.demo.domain;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
@@ -11,8 +11,8 @@ import java.math.BigDecimal;
 
 
 
-@Getter
 @Builder
+@Data
 @AllArgsConstructor
 public class ReceiptRequestItem {
 

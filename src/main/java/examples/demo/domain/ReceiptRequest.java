@@ -1,7 +1,7 @@
 package examples.demo.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import examples.demo.model.Item;
+import examples.demo.businessModel.Item;
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
