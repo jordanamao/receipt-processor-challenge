@@ -9,6 +9,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProcessReceiptResponse {
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     String id;
 
     public ProcessReceiptResponse(String id) {

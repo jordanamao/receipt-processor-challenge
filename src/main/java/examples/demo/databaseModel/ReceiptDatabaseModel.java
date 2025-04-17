@@ -12,7 +12,7 @@ import java.util.List;
 public class ReceiptDatabaseModel {
 
     @Id
-    private long id;
+    private String id;
 
 
     @Column(name = "retailer")
@@ -27,7 +27,8 @@ public class ReceiptDatabaseModel {
     @Column(name = "total")
     private String total;
 
-    @ManyToMany(cascade= CascadeType.ALL)
+    @OneToMany(cascade= CascadeType.ALL)
+    @JoinColumn(name = "itemId")
     private List<ItemDatabaseModel> items;
 
 
@@ -76,11 +77,11 @@ public class ReceiptDatabaseModel {
         this.total = total;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 }

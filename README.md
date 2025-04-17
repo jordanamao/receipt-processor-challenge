@@ -15,8 +15,8 @@ You can assume our engineers have Go and Docker installed to run your applicatio
 ## how to run
 Open the project in intellij, git clone the repository.
 check out feature branch feature/receipt-processor-challenge.
-Once opened up intellij, and on the correct branch. maven clean and install in terminal. 
-Then run the applicaion.
+Once opened up intellij, and on the correct branch. use intellij maven GUI to maven clean install or type the command in terminal: "mvn clean install". 
+Then run the application.
 
 ![Screenshot 2025-04-16 at 12 11 09 PM](https://github.com/user-attachments/assets/42d3425c-cdca-4e71-a5ca-1e97c97bfb16)
 

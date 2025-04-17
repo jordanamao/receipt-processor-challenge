@@ -10,7 +10,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2025-04-16T20:59:57-0500",
+    date = "2025-04-16T22:52:28-0500",
     comments = "version: 1.6.0.Beta1, compiler: javac, environment: Java 17.0.14 (Microsoft)"
 )
 public class MapReceiptDTOReceiptDatabaseModelMapperImpl implements MapReceiptDTOReceiptDatabaseModelMapper {
@@ -30,9 +30,7 @@ public class MapReceiptDTOReceiptDatabaseModelMapperImpl implements MapReceiptDT
         receiptDatabaseModel.setPurchaseTime( receipt.getPurchaseTime() );
         receiptDatabaseModel.setPurchaseDate( receipt.getPurchaseDate() );
         receiptDatabaseModel.setTotal( receipt.getTotal() );
-        if ( receipt.getId() != null ) {
-            receiptDatabaseModel.setId( Long.parseLong( receipt.getId() ) );
-        }
+        receiptDatabaseModel.setId( receipt.getId() );
 
         return receiptDatabaseModel;
     }
@@ -45,7 +43,7 @@ public class MapReceiptDTOReceiptDatabaseModelMapperImpl implements MapReceiptDT
 
         Receipt receipt = new Receipt();
 
-        receipt.setId( String.valueOf( receiptDatabaseModel.getId() ) );
+        receipt.setId( receiptDatabaseModel.getId() );
         receipt.setPurchaseDate( receiptDatabaseModel.getPurchaseDate() );
         receipt.setTotal( receiptDatabaseModel.getTotal() );
         receipt.setRetailer( receiptDatabaseModel.getRetailer() );

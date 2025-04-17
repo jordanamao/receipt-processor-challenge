@@ -9,7 +9,7 @@ public interface ReceiptService {
 
     String processReceipt(ReceiptDatabaseModel receipt);
 
-    String getReceiptById(Long id);
+    String getReceiptById(String id);
 
 
 }

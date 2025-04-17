@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface ReceiptRepo extends JpaRepository<ReceiptDatabaseModel, Long> {
+public interface ReceiptRepo extends JpaRepository<ReceiptDatabaseModel, String> {
 
 
 }

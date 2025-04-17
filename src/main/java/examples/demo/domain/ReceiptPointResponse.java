@@ -11,7 +11,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ReceiptPointResponse {
 
-        String points;
+    public String getPoints() {
+        return points;
+    }
+
+    String points;
 
         public ReceiptPointResponse(String points) {
             this.points = points;

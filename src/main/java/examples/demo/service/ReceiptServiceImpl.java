@@ -34,15 +34,15 @@ public class ReceiptServiceImpl implements ReceiptService{
     public String processReceipt(ReceiptDatabaseModel receipt) {
 
         String id = UUID.randomUUID().toString();
-        receipt.setId(Long.parseLong(id));
+        receipt.setId(id);
 
         ReceiptDatabaseModel newReceipt = new ReceiptDatabaseModel();
         newReceipt.setId(receipt.getId());
         newReceipt.setRetailer(receipt.getRetailer());
         newReceipt.setPurchaseTime(receipt.getPurchaseTime());
+        newReceipt.setPurchaseDate(receipt.getPurchaseDate());
+        newReceipt.setItems(receipt.getItems());
         newReceipt.setTotal(receipt.getTotal());
-
-
 
 
 //                .id(receipt.getId())
@@ -68,7 +68,7 @@ public class ReceiptServiceImpl implements ReceiptService{
         if (str != null) {
 
             for (char c : str.toCharArray()) {
-                if (Character.isDigit(c)) {
+                if (Character.isDigit(c) || Character.isLetter(c)) {
                     count++;
                 }
             }
@@ -118,7 +118,7 @@ public class ReceiptServiceImpl implements ReceiptService{
         for (ItemDatabaseModel item : items) {
 
             if(item.getShortDescription().trim().length() % 3 == 0) {
-                int points = (int)(Math.ceil(Double.parseDouble(item.getPrice())) * 0.2);
+                int points = (int)(Math.ceil(Double.parseDouble(item.getPrice()) * 0.2));
                 totalPoints += points;
             }
         }
@@ -172,7 +172,7 @@ public class ReceiptServiceImpl implements ReceiptService{
 
 
     @Override
-    public String getReceiptById(Long id) {
+    public String getReceiptById(String id) {
 
 
         ReceiptDatabaseModel receiptDatabaseModel = receiptRepo.findById(id).orElseThrow(() -> new IllegalStateException("Receipt with ID " + id + " does not exist"));
